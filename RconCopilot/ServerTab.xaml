@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Rcon.ServerTab"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Rcon"
+             Title="Server">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <!-- Connection Form -->
+                <RowDefinition Height="Auto" />
+                <!-- Connected Area -->
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Connection Form (visible until connected) -->
+            <StackLayout x:Name="ConnectionForm" Grid.Row="0" Padding="10" Spacing="10">
+                <Entry x:Name="EntryIP" Placeholder="IP Address" />
+                <Entry x:Name="EntryPort" Placeholder="Port" Keyboard="Numeric" />
+                <Entry x:Name="EntryPassword" Placeholder="RCON Password" IsPassword="True" />
+                <Button x:Name="ConnectButton" Text="Connect" Clicked="ConnectButton_Clicked"/>
+            </StackLayout>
+
+            <!-- Connected Area (hidden until login succeeds) -->
+            <Grid x:Name="ConnectedArea" Grid.Row="1" IsVisible="False">
+                <Grid.ColumnDefinitions>
+                    <!-- Left side: Command area -->
+                    <ColumnDefinition Width="2*"/>
+                    <!-- Right side: Server Status/Player view -->
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Left Column -->
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <!-- Predefined Commands Toolbar -->
+                        <RowDefinition Height="Auto"/>
+                        <!-- Free-text Command Bar -->
+                        <RowDefinition Height="Auto"/>
+                        <!-- Console Log / History -->
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Predefined Commands Toolbar (Pickers) -->
+                    <ScrollView Orientation="Horizontal" Grid.Row="0" Padding="5">
+                        <StackLayout x:Name="PredefinedCommandsStack" Orientation="Horizontal" Spacing="10">
+                            <!-- Dropdown menus (Picker controls) are added dynamically -->
+                        </StackLayout>
+                    </ScrollView>
+
+                    <!-- Free-text Command Bar -->
+                    <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="5" Spacing="5">
+                        <Entry x:Name="CommandEntry" Placeholder="Enter command" HorizontalOptions="FillAndExpand"/>
+                        <Button Text="Send" Clicked="SendCommandButton_Clicked"/>
+                    </StackLayout>
+
+                    <!-- Console Log / History Area -->
+                    <ScrollView Grid.Row="2" Padding="5">
+                        <StackLayout x:Name="OutputStack" Spacing="5"/>
+                    </ScrollView>
+                </Grid>
+
+                <!-- Right Column: Parsed Server Info and Player List -->
+                <ScrollView Grid.Column="1" Padding="5">
+                    <StackLayout>
+                        <!-- Server Information Section -->
+                        <Label Text="Server Info" FontAttributes="Bold" FontSize="16" Margin="0,0,0,5"/>
+                        <!-- Timestamp Label -->
+                        <Label x:Name="LastUpdatedLabel" 
+                   Text="Last updated: --" 
+                   FontAttributes="Bold" 
+                   FontSize="12" 
+                   TextColor="Gray" 
+                   Margin="0,0,0,5"/>
+                        <StackLayout x:Name="ServerInfoStack" Spacing="2"/>
+
+                        <!-- Players Section -->
+                        <Label Text="Players" FontAttributes="Bold" FontSize="16" Margin="10,10,0,5"/>
+                        <CollectionView x:Name="PlayerListView">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="5" ColumnDefinitions="*,Auto,Auto">
+                                        <Label Grid.Column="0" Text="{Binding Name}" 
+                           VerticalOptions="Center" FontSize="14"/>
+                                        <Button Grid.Column="1" Text="Kick" 
+                            Clicked="KickButton_Clicked"
+                            CommandParameter="{Binding}" FontSize="12" Margin="2,0"/>
+                                        <Button Grid.Column="2" Text="Ban" 
+                            Clicked="BanButton_Clicked"
+                            CommandParameter="{Binding}" FontSize="12" Margin="2,0"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
