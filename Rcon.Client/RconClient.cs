@@ -175,11 +175,9 @@ namespace Rcon.Client
 
         public void Dispose()
         {
-            _cts.Cancel();
+            Disconnect();
             _cts.Dispose();
-            _stream.Close();
             _stream.Dispose();
-            _tcpClient.Close();
             _tcpClient.Dispose();
         }
     }
