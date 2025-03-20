@@ -1,4 +1,4 @@
-﻿using Rcon.Commands;
+﻿using Rcon.Ui.Types;
 
 namespace Rcon.Components
 {

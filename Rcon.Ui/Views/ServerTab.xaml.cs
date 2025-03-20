@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using Rcon.Client;
-using Rcon.Commands;
+using Rcon.Parser.Types;
 using Rcon.Server;
+using Rcon.Ui.Types;
 using Rcon.Util;
 
-namespace Rcon
+namespace Rcon.Ui.Views
 {
     public partial class ServerTab : ContentPage
     {

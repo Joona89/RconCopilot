@@ -1,4 +1,5 @@
-﻿using Rcon.Commands;
+﻿using Rcon.Parser.Types;
+using Rcon.Ui.Types;
 
 namespace Rcon.Util
 {

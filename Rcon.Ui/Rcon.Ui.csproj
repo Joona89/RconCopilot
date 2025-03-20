@@ -54,7 +54,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Rcon.Client\Rcon.Client.csproj" />
-	  <ProjectReference Include="..\Rcon.Commands\Rcon.Commands.csproj" />
+	  <ProjectReference Include="..\Rcon.Parser\Rcon.Parser.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

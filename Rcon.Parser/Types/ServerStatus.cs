@@ -1,4 +1,4 @@
-﻿namespace Rcon.Server
+﻿namespace Rcon.Parser.Types
 {
     /// <summary>
     /// Represents the parsed server status information.

@@ -1,4 +1,4 @@
-﻿namespace Rcon.Commands
+﻿namespace Rcon.Ui.Types
 {
     public class PredefinedCommand
     {
