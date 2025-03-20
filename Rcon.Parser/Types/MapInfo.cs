@@ -1,4 +1,4 @@
-﻿namespace Rcon.Commands
+﻿namespace Rcon.Parser.Types
 {
 
     public class MapInfo

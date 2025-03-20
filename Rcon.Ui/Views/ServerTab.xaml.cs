@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using Rcon.Client;
-using Rcon.Commands;
+using Rcon.Parser.Types;
 using Rcon.Server;
+using Rcon.Ui.Types;
 using Rcon.Util;
 
-namespace Rcon
+namespace Rcon.Ui.Views
 {
     public partial class ServerTab : ContentPage
     {
@@ -93,7 +94,7 @@ namespace Rcon
 
                 fullCommand += " " + map.MapCode;
             }
-            else if (cmd.CommandValue == "host_workshop_map" || (cmd.PossibleParameters != null && cmd.PossibleParameters.Any(y => y.Contains(":"))))
+            else if (cmd.PossibleParameters != null && cmd.PossibleParameters.Any(y => y.Contains(":")))
             {
                 // Build a list of workshop options.
                 List<string> workshopOptions = new List<string>();
@@ -111,14 +112,14 @@ namespace Rcon
                 workshopOptions.Add("Custom");
 
                 // Prompt the user to select between the predefined option(s) and custom.
-                string selected = await DisplayActionSheet("Select Workshop Map", "Cancel", null, workshopOptions.ToArray());
+                string selected = await DisplayActionSheet("Choose", "Cancel", null, workshopOptions.ToArray());
                 if (string.IsNullOrWhiteSpace(selected) || selected == "Cancel")
                     return;
 
                 if (selected == "Custom")
                 {
                     // Prompt for a custom workshop ID.
-                    string customId = await DisplayPromptAsync("Custom Workshop Map", "Enter workshop map ID:");
+                    string customId = await DisplayPromptAsync("Enter custom value", "Enter workshop map ID:");
                     if (string.IsNullOrWhiteSpace(customId))
                         return;
                     fullCommand += " " + customId;

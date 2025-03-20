@@ -13,7 +13,7 @@ You can actually see the code that its clean, rather than most of the other appl
 - Basic RCON Commands such as change level, load workshop map, kick, ban, warmup end, yada yada.
 - Free text command field for not predefined commands
 
-Feel free to create PR's. This is completely hobby project done in few hours, so I wont be fixing most of the issue tickets. 
+Feel free to create PR's. This is completely hobby project done in few hours, so there are bugs and missing features. 
 
 # UI
 

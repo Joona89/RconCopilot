@@ -1,4 +1,6 @@
-﻿namespace Rcon.Server
+﻿using Rcon.Parser.Types;
+
+namespace Rcon.Server
 {
     public static class ServerResponseParser
     {

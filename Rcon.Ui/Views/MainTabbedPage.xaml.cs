@@ -1,4 +1,4 @@
-﻿namespace Rcon
+﻿namespace Rcon.Ui.Views
 {
     public partial class MainTabbedPage : TabbedPage
     {
