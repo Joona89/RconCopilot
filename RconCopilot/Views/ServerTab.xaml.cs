@@ -93,7 +93,7 @@ namespace Rcon
 
                 fullCommand += " " + map.MapCode;
             }
-            else if (cmd.CommandValue == "host_workshop_map")
+            else if (cmd.CommandValue == "host_workshop_map" || (cmd.PossibleParameters != null && cmd.PossibleParameters.Any(y => y.Contains(":"))))
             {
                 // Build a list of workshop options.
                 List<string> workshopOptions = new List<string>();

@@ -58,16 +58,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="ServerTab.xaml.cs">
+	  <Compile Update="Views\ServerTab.xaml.cs">
 	    <DependentUpon>ServerTab.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="MainTabbedPage.xaml.cs">
+	  <Compile Update="Views\MainTabbedPage.xaml.cs">
 	    <DependentUpon>MainTabbedPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="MainTabbedPage.xaml">
+	  <MauiXaml Update="Views\MainTabbedPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

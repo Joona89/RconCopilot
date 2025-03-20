@@ -11,4 +11,5 @@
         public bool RequiresUserInputParameter { get; set; } = false;
         public required string Category { get; set; }             // Category name (e.g. "General", "Game", etc.)
     }
+
 }

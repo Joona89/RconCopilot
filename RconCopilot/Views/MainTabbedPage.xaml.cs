@@ -10,7 +10,7 @@
             AddNewServerTab();
 
             // Toolbar button to add new server tabs.
-            ToolbarItems.Add(new ToolbarItem("New Tab", null, () =>
+            ToolbarItems.Add(new ToolbarItem("Connect", null, () =>
             {
                 AddNewServerTab();
             }));

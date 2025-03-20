@@ -55,7 +55,7 @@
                     </StackLayout>
 
                     <!-- Console Log / History Area -->
-                    <ScrollView Grid.Row="2" Padding="5">
+                    <ScrollView Grid.Row="2" Padding="5" Margin="5, 5, 25, 5" >
                         <StackLayout x:Name="OutputStack" Spacing="5"/>
                     </ScrollView>
                 </Grid>
