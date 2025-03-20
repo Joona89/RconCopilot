@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Rcon.Client
 {
-    public class RconClient
+    public class RconClient: IDisposable
     {
         private readonly string _ip;
         private readonly int _port;
@@ -42,10 +42,6 @@ namespace Rcon.Client
             var response = await ReadResponseAsync(_cts.Token);
 
             _ = StartListeningAsync();
-            //if (!response.Contains("Authentication successful"))
-            //{
-            //    throw new Exception("Authentication failed.");
-            //}
         }
 
         // Sends a command and awaits its response via the background listener.
@@ -175,6 +171,14 @@ namespace Rcon.Client
                 return response.TrimEnd('\0');
             }
             return string.Empty;
+        }
+
+        public void Dispose()
+        {
+            _stream.Close();
+            _stream.Dispose();
+            _tcpClient.Close();
+            _tcpClient.Dispose();
         }
     }
 }
