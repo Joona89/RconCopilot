@@ -63,6 +63,7 @@
                 <!-- Right Column: Parsed Server Info and Player List -->
                 <ScrollView Grid.Column="1" Padding="5">
                     <StackLayout>
+                        <Button Text="Disconnect" Clicked="DisconnectButton_Clicked" Margin="0,0,0,10"/>
                         <!-- Server Information Section -->
                         <Label Text="Server Info" FontAttributes="Bold" FontSize="16" Margin="0,0,0,5"/>
                         <!-- Timestamp Label -->

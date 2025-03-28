@@ -39,7 +39,11 @@ namespace Rcon.Client
             await _stream.WriteAsync(authPacket, 0, authPacket.Length);
 
             // Read the authentication response (simplified).
-            var response = await ReadResponseAsync(_cts.Token);
+            var response = await ReadResponseBytesAsync(_cts.Token);
+            if (response[0] != 1)
+            {
+                throw new Exception("Invalid RCON Password");
+            }
 
             _ = StartListeningAsync();
         }
@@ -144,16 +148,13 @@ namespace Rcon.Client
             return packet;
         }
 
-        // Helper: Reads an entire RCON response from the server.
-        private async Task<string> ReadResponseAsync(CancellationToken token)
+        private async Task<byte[]> ReadResponseBytesAsync(CancellationToken token)
         {
-            // First, read 4 bytes to determine the packet length.
             byte[] lengthBuffer = new byte[4];
             int read = await _stream.ReadAsync(lengthBuffer, 0, 4, token);
             if (read < 4)
                 throw new Exception("Failed to read packet length.");
             int packetLength = BitConverter.ToInt32(lengthBuffer, 0);
-
             byte[] responseBuffer = new byte[packetLength];
             int totalRead = 0;
             while (totalRead < packetLength)
@@ -163,6 +164,14 @@ namespace Rcon.Client
                     break;
                 totalRead += r;
             }
+            return responseBuffer;
+        }
+
+        // Helper: Reads an entire RCON response from the server.
+        private async Task<string> ReadResponseAsync(CancellationToken token)
+        {
+            var responseBuffer = await ReadResponseBytesAsync(token);
+            int packetLength = responseBuffer.Length;
 
             // Skip the first 8 bytes (RequestID and Type) to get the payload.
             if (packetLength > 8)

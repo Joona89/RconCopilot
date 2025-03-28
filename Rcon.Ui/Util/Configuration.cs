@@ -69,7 +69,7 @@ namespace Rcon.Util
             new PredefinedCommand { DisplayText = "Limit Teams",    CommandValue = "mp_limitteams", PossibleParameters = new [] { "0:No", "1:Yes" }, Category = "Config" },
             new PredefinedCommand { DisplayText = "Friendly Fire",  CommandValue = "mp_friendlyfire", PossibleParameters = new [] { "1:Yes", "0:No" }, Category = "Config" },
             new PredefinedCommand { DisplayText = "Force AutoBalance", CommandValue = "mp_forceautoteambalance", PossibleParameters = new [] { "1:Yes", "0:No" }, Category = "Config" },
-            new PredefinedCommand { DisplayText = "Freeze Time",    CommandValue = "mp_freezetime", PossibleParameters = new [] { "0:0 Seconds", "5: Seconds", "10: Seconds", "15: Seconds" }, Category = "Config" },
+            new PredefinedCommand { DisplayText = "Freeze Time",    CommandValue = "mp_freezetime", PossibleParameters = new [] { "0:0 Seconds", "5:5 Seconds", "10:10 Seconds", "15:15 Seconds" }, Category = "Config" },
             new PredefinedCommand { DisplayText = "Time Limit",     CommandValue = "mp_timelimit", PossibleParameters = new [] { "30:30 Seconds", "45:45 Seconds", "60:60 Seconds" }, Category = "Config" },
             new PredefinedCommand { DisplayText = "Max Rounds",     CommandValue = "mp_maxrounds", PossibleParameters = new [] { "12", "16", "20" }, Category = "Config" },
             new PredefinedCommand { DisplayText = "Round Restart Delay", CommandValue = "mp_roundrestartdelay", PossibleParameters = new [] { "3:3 Seconds", "5:5 Seconds", "7:7 Seconds" }, Category = "Config" },

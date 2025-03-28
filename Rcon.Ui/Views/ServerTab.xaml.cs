@@ -293,6 +293,14 @@ namespace Rcon.Ui.Views
             }
         }
 
+        private async void DisconnectButton_Clicked(object sender, EventArgs e)
+        {
+            _statusCts?.Cancel();
+            _rconClient.Disconnect();
+            ConnectionForm.IsVisible = true;
+            ConnectedArea.IsVisible = false;
+            this.Title = "🔴 Disconnected";
+        }
 
         // Handler for the free-text Send button (only user-entered commands get logged).
         private async void SendCommandButton_Clicked(object sender, EventArgs e)
